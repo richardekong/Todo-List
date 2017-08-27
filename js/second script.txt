@@ -1,0 +1,42 @@
+<script>
+		//Jquery block
+		$(document).ready(function(){
+			//create todotitle
+			var title;
+			var todoList;
+			var id=0;
+			//create and add a todolist on click of the addtodolist button
+			$("#addtodolistbtn").on("click",function(){
+				title=prompt("TodoList title:","");
+				if(title){
+						todoList=$("<div class='container TodoList'>"+
+									"<div class='row ' id='todotitlebar'>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'>"+"<img src='../Ruby Garage/image/calendarIcon.png' class='calIcon imgicon'/>"+"</div>"+
+										"<div class='col-xs-9 col-sm-9 col-md-9 col-lg-9'>"+"<p>"+title+"</p></div>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 editiconholder'>"+"</div>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 deliconholder'>"+"</div>"+
+									"</div>"+"<br>"+
+									"<div class='row'>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon text-center'><img src='../Ruby Garage/image/green-add.png'/></div>"+
+										"<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 text-center'><input type='text' class='taskinput' value='start typing here to create a task'/></div>"+
+										"<div class='col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center'><button class='addtask'>Add Task</button></div>"+
+									"</div>"+
+								"</div>"+"<br>");
+					
+					}
+				$("#content").append(todoList); 
+			});
+			$("#content").on("mouseenter","#todotitlebar",function(){
+														$(".editiconholder").append("<img src='../Ruby Garage/image/editicon.png' id='editicon'/>");
+														$(".deliconholder").append("<img src='../Ruby Garage/image/deleteicon.png' id='delicon'/>");
+			}	
+			).on("mouseleave","#todotitlebar",function(){
+														$(".editiconholder").empty();	
+													 	$(".deliconholder").empty();
+													 });
+			$(".addtask").on("click",function(){
+
+			});
+		});
+		
+		</script>
