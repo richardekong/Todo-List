@@ -145,7 +145,7 @@
 							//sort tasks in a desired manner
 							$(this).parent().sortable({items:">.taskcontainer"}).css("cursor","pointer");
 			});
-			//when the mouse leaves the highted row
+			//when the mouse leaves the highlighted row
 			$("body").on("mouseleave",".taskcontainer",function(){
 					//remove all the vissual effects or icon
 					$(this).css("background","");
