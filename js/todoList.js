@@ -1,34 +1,72 @@
 //Jquery block
 		$(document).ready(function(){
+
+			
+			//attach click event to the add todo button
+			$("#addtodolistbtn").css("cursor","pointer").on("click",function(){
+					//create the todo List
+					var todoListUI=$(
+								"<div class='container TodoList' id='todoListUI'>"+
+									"<div class='row todotitlebars' id='todotitlebar'>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon'>"+
+											"<img src='../Todo-List/image/calendarIcon.png' class='calIcon imgicon'/>"+
+										"</div>"+
+										"<div class='col-xs-9 col-sm-9 col-md-9 col-lg-9'>"+
+											"<p id='title'></p>"+
+										"</div>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1' id='editiconholder'></div>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1' id='deliconholder'></div>"+
+									"</div><br>"+
+									"<div class='row' id='taskmgr'>"+
+										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon text-center'>"+
+											"<img id='greenplus' src='../Todo-List/image/green-add.png'/>"+
+										"</div>"+
+										"<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 text-center'>"+
+											"<input id='taskdesc' type='text' class='taskinput' value='start typing here to create a task'/>"+
+										"</div>"+
+										"<div class='col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center'>"+
+											"<button id='addtaskbtn' class='addtask'>Add Task</button>"+
+										"</div>"+
+									"</div>"+
+								"</div><br>");
+					//append the todo List to the parent element
+					$("#content").append($(todoListUI));
+
+			});
 			 var taskCols;
-			//attach a hover event to the titlebar
-			$("#todotitlebar").hover(
-						function(){
-							$("#editiconholder").css("cursor","pointer");
-							$("#editiconholder").append("<img src='../Todo-List/image/editicon.png' id='editiconid'/>").
-							click(function(){
+			//attach a mouseenter event to the todo titlebar
+			$("body").on("mouseenter","#todotitlebar",function(){
+							$(this).find("#editiconholder").css("cursor","pointer");
+							$(this).find("#greenplus").css("cursor","pointer");
+							$(this).find("#editiconholder").append("<img src='../Todo-List/image/editicon.png' id='editiconid'/>");
+							$(this).find("#editiconholder").click(function(){
 
 								//request for name of todoList
 								var text=prompt("Name of TodoList","");
-								if(text)
-									$("#title").html(text);
-							
+								if(text){
+									$(this).parent().find("#title").html(text);
+								}
 							});
-							$("#deliconholder").css("cursor","pointer");
-							$("#deliconholder").append("<img src='../Todo-List/image/deleteicon.png' id='deliconid'/>").
+
+							$(this).find("#deliconholder").css("cursor","pointer");
+							$(this).find("#deliconholder").append("<img src='../Todo-List/image/deleteicon.png' id='deliconid'/>").
 							click(function(){
 								//delete title text
-								$("#title").empty();
+								$(this).parent().find("#title").empty();
 							});
-			},			
-						function(){
-							$("#editiconholder").empty();
-							$("#deliconholder").empty();
+			});	
+				//attach a corresponding mouseleave event to the todo titlebar	
+				$("body").on("mouseleave","#todotitlebar",function(){
+							$(this).find("#editiconholder").empty();
+							$(this).find("#deliconholder").empty();
 			});
 			//create and add task columns on click of the green add icon
-			$("#greenplus").css("cursor","pointer").on("click",function(){
+		
+						$("#content").find("#greenplus").css("cursor","pointer");
 
-						taskCols=$("<div class='row taskcontainer' id='taskrecord'>"+
+						$("#content").on("click","#greenplus",function(){
+
+							taskCols=$("<div class='row taskcontainer' id='taskrecord' >"+
 											"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'>"+"<input type='checkbox' id='mark'/>"+"</div>"+
 											"<div class='col-xs-7 col-sm-7 col-md-7 col-lg-7'>"+"<p class='task' id='taskname'>"+"</p>"+"</div>"+
 											"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon' id='drag'>"+"</div>"+
@@ -36,24 +74,26 @@
 											"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2 imgicon' id='taskdel'>"+"</div>"+
 
 										"</div>");
-						$("#todoListUI").append($(taskCols)).css({"border-bottom-left-radius":"10px",
+						//dynamically find the todo list container and append taskcols	
+						$(this).parent().parent().parent().append($(taskCols)).css({"border-bottom-left-radius":"10px",
 															"border-bottom-right-radius":"10px"});
-			});
+						
+			}).css("cursor","pointer");
 			//remove and add hint to task input on focus and lost of focus
-			$("#taskdesc").focus(function(){
+			$("#content").on("focus","#taskdesc",function(){
 				$(this).val("");
 				
 			});
 			
 			//add task on click of add task button
-			$("#addtaskbtn").click(function(){
+			$("#content").on("click","#addtaskbtn",function(){
 				var hint="start typing here to create a task";
-				var taskdesc=$("#taskdesc").val();
-				var title=$("#title").html();
+				var taskdesc=$(this).parent().parent().find("#taskdesc").val();
+				var title=$(this).parent().parent().parent().find("#title").html();
 				//add a task if the task description is provided 
 				if (taskdesc && taskdesc!=hint && title){
 						//get an array of task rows
-						var taskrows=$("#todoListUI").find(".task");
+						var taskrows=$(this).parent().parent().parent().find(".task");
 						//loop through the all taskrows
 						for(i=0;i<taskrows.length;i++){
 							//if the current taskrow contains a task,skip to the next row
@@ -72,10 +112,10 @@
 				{
 					alert("you must provide a todo title and task name");
 				}
-				$("#taskdesc").val("start typing here to create a task");
+				$(this).parent().parent().parent().find("#taskdesc").val("start typing here to create a task");
 			});
 			//on hovering any record , highlight that record with with colors and icons
-			$("#todoListUI").on("mouseenter",".taskcontainer",function(){
+			$("body").on("mouseenter",".taskcontainer",function(){
 							//change the background 
 							$(this).css("background","#fcfed5");
 							//for the taskedit icon
@@ -103,10 +143,10 @@
 							//for the drag icon
 							$(this).find("#drag").append("<img src='../Todo-List/image/drag.png' id='grab'/>");
 							//sort tasks in a desired manner
-							$("#todoListUI").sortable({items:">.taskcontainer"}).css("cursor","-webkit-grabbing");
+							$(this).parent().sortable({items:">.taskcontainer"}).css("cursor","pointer");
 			});
 			//when the mouse leaves the highted row
-			$("#todoListUI").on("mouseleave",".taskcontainer",function(){
+			$("body").on("mouseleave",".taskcontainer",function(){
 					//remove all the vissual effects or icon
 					$(this).css("background","");
 					$(this).find("#taskedit").empty();
