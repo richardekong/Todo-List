@@ -31,9 +31,9 @@
 								"</div><br/><br/>");
 					//append the todo List to the parent element
 					$("#content").append($(todoListUI));
-					//$("this").animate({bottom:"-=180px"})
+					
 			});
-			 var taskCols;
+			 var taskRows;
 			//attach a mouseenter event to the todo titlebar
 			$("body").on("mouseenter","#todotitlebar",function(){
 							$(this).find("#editiconholder").css("cursor","pointer");
@@ -66,7 +66,7 @@
 
 						$("#content").on("click","#greenplus",function(){
 
-							taskCols=$("<div class='row taskcontainer' id='taskrecord' >"+
+							taskRows=$("<div class='row taskcontainer' id='taskrecord' >"+
 											"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1'>"+"<input type='checkbox' id='mark'/>"+"</div>"+
 											"<div class='col-xs-7 col-sm-7 col-md-7 col-lg-7'>"+"<p class='task' id='taskname'>"+"</p>"+"</div>"+
 											"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon' id='drag'>"+"</div>"+
@@ -74,13 +74,12 @@
 											"<div class='col-xs-2 col-sm-2 col-md-2 col-lg-2 imgicon' id='taskdel'>"+"</div>"+
 
 										"</div>");
-						//dynamically find the todo list container and append taskcols	
-						$(this).parent().parent().parent().append($(taskCols)).
-						css({"border-bottom-left-radius":"10px","border-bottom-right-radius":"10px"});
-
-
 						
-			}).css("cursor","pointer");
+						//dynamically find the todo list container and append taskRows	
+						$(this).parent().parent().parent().append($(taskRows));	
+
+			})
+						.css("cursor","pointer");
 			//remove and add hint to task input on focus and lost of focus
 			$("#content").on("focus","#taskdesc",function(){
 				$(this).val("");
@@ -145,7 +144,7 @@
 							//for the drag icon
 							$(this).find("#drag").append("<img src='../Todo-List/image/drag.png' id='grab'/>");
 							//sort tasks in a desired manner
-							$(this).parent().sortable({items:">.taskcontainer"}).css("cursor","pointer");
+							$(this).parent().sortable({items:">.taskcontainer",placeholder:"white"}).css("cursor","pointer");
 			});
 			//when the mouse leaves the highlighted row
 			$("body").on("mouseleave",".taskcontainer",function(){
