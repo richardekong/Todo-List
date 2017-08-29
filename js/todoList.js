@@ -16,7 +16,7 @@
 										"</div>"+
 										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1' id='editiconholder'></div>"+
 										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1' id='deliconholder'></div>"+
-									"</div><br>"+
+									"</div><br/>"+
 									"<div class='row' id='taskmgr'>"+
 										"<div class='col-xs-1 col-sm-1 col-md-1 col-lg-1 imgicon text-center'>"+
 											"<img id='greenplus' src='../Todo-List/image/green-add.png'/>"+
@@ -27,11 +27,11 @@
 										"<div class='col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center'>"+
 											"<button id='addtaskbtn' class='addtask'>Add Task</button>"+
 										"</div>"+
-									"</div>"+
-								"</div><br>");
+									"</div>"+"<br/>"+
+								"</div><br/><br/>");
 					//append the todo List to the parent element
 					$("#content").append($(todoListUI));
-
+					//$("this").animate({bottom:"-=180px"})
 			});
 			 var taskCols;
 			//attach a mouseenter event to the todo titlebar
@@ -75,8 +75,10 @@
 
 										"</div>");
 						//dynamically find the todo list container and append taskcols	
-						$(this).parent().parent().parent().append($(taskCols)).css({"border-bottom-left-radius":"10px",
-															"border-bottom-right-radius":"10px"});
+						$(this).parent().parent().parent().append($(taskCols)).
+						css({"border-bottom-left-radius":"10px","border-bottom-right-radius":"10px"});
+
+
 						
 			}).css("cursor","pointer");
 			//remove and add hint to task input on focus and lost of focus
@@ -154,4 +156,3 @@
 					$(this).find("#taskdel").empty();
 			});
 		});
-		

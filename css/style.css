@@ -1,24 +1,27 @@
-
 body{
 	background:#cc8713;
 }
 #content{
-	
+	height: 500px;
 	background: -webkit-linear-gradient(#D2D1BE, #cc8713);
- 	height:50em;
+	position:relative;
     padding: 10px;
+    overflow:auto;
      }
 .TodoList{
 	margin:auto;
 	padding:10px;
 	top:15%;
-	margin-right: auto;
-	margin-left: auto;
 	position: relative;
 	width: 700px;
 	background-color: #cecece;
 	padding:10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	box-shadow: 1px 1px 1px black;
+	
 }
+
 #addtodolistbtn {
 	color:white;
 	font-weight: bold;
@@ -27,24 +30,48 @@ body{
 	background-color:#4673AD ;
 	width: 209px; height: 46px;
 	padding: 10px;
-	position:relative;
-	margin: auto;
-	top:70%;
+	position: fixed;
+	left:45%;
+	bottom:100px;
 	border:0.1px solid black;
+	box-shadow: 1px 1px 1px black;
 }
 .addedTodoList{
 	
 	/*height: 320px;*/
 }
+
 #todotitlebar{
 	color:white;
 	font-size: 15px;
 	font-weight: bold;
 	background-color:#4673AD;
-	width: 699px;
+	width: 700px;
 	height: 50px;
 	padding:10px;
-
+	border: 1px solid #4673AD;
+	position:relative;
+	top:0px; left:5px;
+	margin-top: -10px;
+	box-shadow: 0.5px 0.5px 0.5px black;
+	text-shadow:0.5px 0.5px 0.5px black;
+}
+#taskmgr{
+	background-color: #cecece;
+	width: 700px;
+	left:5px;
+	position: relative;
+	
+}
+.taskcontainer{
+	background-color: white;
+	width: 700px; 
+	height: 50px;
+	position: relative;
+	left:5px;
+	bottom: 0px;
+	border-bottom:0.1px solid #cecece;
+	box-shadow: 0.5px 0.5px 0.5px black;
 }
 .imgicon{
 	width: 26px;
@@ -56,10 +83,13 @@ body{
 	width: 108px; height: 30px;
 	border-top-right-radius: 4px;
 	border-bottom-right-radius:4px;
-	border: 0.1px solid #cecece;
+	border: 1px solid transparent;
+	text-shadow:1px 1px 1px black;
+	box-shadow: 0.5px 0.5px 0.5px 0.5px black;
 }
 .taskinput{
-	width: 494px;
+	width: 484px;
 	height: 30px;
 	color: silver;
+	box-shadow: 0.5px 0.5px 0.5px black;
 }
