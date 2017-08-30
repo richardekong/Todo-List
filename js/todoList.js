@@ -22,7 +22,7 @@
 											"<img id='greenplus' src='../Todo-List/image/green-add.png'/>"+
 										"</div>"+
 										"<div class='col-xs-8 col-sm-8 col-md-8 col-lg-8 text-center'>"+
-											"<input id='taskdesc' type='text' class='taskinput' value='start typing here to create a task'/>"+
+											"<input id='taskdesc' type='text' class='taskinput' placeholder='start typing here to create a task'/>"+
 										"</div>"+
 										"<div class='col-xs-3 col-sm-3 col-md-3 col-lg-3 text-center'>"+
 											"<button id='addtaskbtn' class='addtask'>Add Task</button>"+
@@ -50,9 +50,9 @@
 
 							$(this).find("#deliconholder").css("cursor","pointer");
 							$(this).find("#deliconholder").append("<img src='../Todo-List/image/deleteicon.png' id='deliconid'/>").
-							click(function(){
-								//delete title text
-								$(this).parent().find("#title").empty();
+							on("click","#deliconid",function(){
+								//delete todo 
+								$(this).parent().parent().parent().empty().removeClass("TodoList");
 							});
 			});	
 				//attach a corresponding mouseleave event to the todo titlebar	
@@ -113,7 +113,7 @@
 				{
 					alert("you must provide a todo title and task name");
 				}
-				$(this).parent().parent().parent().find("#taskdesc").val("start typing here to create a task");
+				$(this).parent().parent().parent().find("#taskdesc").val("");
 			});
 			//on hovering any record , highlight that record with with colors and icons
 			$("body").on("mouseenter",".taskcontainer",function(){
@@ -139,7 +139,7 @@
 							//on click of the delete icon
 							$(this).find("#taskdel").click(function(){
 								//delete the highlighted row
-								$(this).parent().fadeIn(3000).empty();
+								$(this).parent().empty().removeClass("taskcontainer");
 							});
 							//for the drag icon
 							$(this).find("#drag").append("<img src='../Todo-List/image/drag.png' id='grab'/>");
