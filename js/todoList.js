@@ -52,7 +52,7 @@
 							$(this).find("#deliconholder").append("<img src='../Todo-List/image/deleteicon.png' id='deliconid'/>").
 							on("click","#deliconid",function(){
 								//delete todo 
-								$(this).parent().parent().parent().empty().removeClass("TodoList");
+								$(this).parent().parent().parent().remove();
 							});
 			});	
 				//attach a corresponding mouseleave event to the todo titlebar	
