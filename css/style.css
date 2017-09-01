@@ -2,7 +2,7 @@ body{
 	background:#cc8713;
 }
 #content{
-	height: 500px;
+	
 	background: -webkit-linear-gradient(#D2D1BE, #cc8713);
 	position:relative;
     padding: 10px;
@@ -30,15 +30,11 @@ body{
 	background-color:#4673AD ;
 	width: 209px; height: 46px;
 	padding: 10px;
-	position: fixed;
+	position:fixed;
 	left:45%;
-	bottom:100px;
+	bottom:10%;
 	border:0.1px solid black;
 	box-shadow: 1px 1px 1px black;
-}
-.addedTodoList{
-	
-	/*height: 320px;*/
 }
 
 #todotitlebar{
@@ -91,4 +87,81 @@ body{
 	width: 484px;
 	height: 30px;
 	box-shadow: 0.5px 0.5px 0.5px black;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    right: 50%;
+    bottom: 0;
+    background-color: white;
+    z-index: 2;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px black;
+    
+}
+#overlayheader{
+	top:0;
+	text-align: center;
+	margin-top: -20px;
+	background: #4673AD;
+	color: white;
+	text-shadow:1px 1px 1px black;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+#frontpagefooter{
+	position: fixed;
+	bottom:0;
+	top:70%;
+	right: 45%;
+	width: 200px;
+
+}
+#login{
+	background: #4673AD;
+	color: white;
+	font-weight: bold;
+	width: 100px;
+	height: 50px;
+	text-shadow:2px 2px 2px black;
+	box-shadow: 1px 1px 1px black;
+	border:1px solid black;
+	border-top-right-radius:15px;
+	border-bottom-right-radius:15px;
+}
+#signup{
+	background: #4673AD;
+	color: white;
+	font-weight: bold;
+	text-shadow:2px 2px 2px black;
+	box-shadow: 1px 1px 1px black;
+	border:1px solid black;
+	width:100px;
+	height: 50px;
+	border-top-left-radius:15px;
+	border-bottom-left-radius:15px;
+}
+.forminputs{
+	width:300px;
+	display: block;
+	margin-left:200px;
+	padding: 20px;
+	
+}
+#adduser label.error, #loginuser label.error {
+font-size: 0.8em;
+color: #F00;
+font-weight: bold;
+display: block;
+margin-left: 215px;
+}
+#comment{
+	color:green;
+	text-shadow:1px 1px 1px black;
 }
