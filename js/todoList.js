@@ -1,7 +1,9 @@
 //Jquery block
 		$(document).ready(function(){
 
-			
+			$("#overlay").css("display","block");
+			//create a register form
+				
 			//attach click event to the add todo button
 			$("#addtodolistbtn").css("cursor","pointer").on("click",function(){
 					//create the todo List
@@ -30,7 +32,7 @@
 									"</div>"+"<br/>"+
 								"</div><br/><br/>");
 					//append the todo List to the parent element
-					$("#content").append($(todoListUI));
+					$("#content").prepend($(todoListUI));
 					
 			});
 			 var taskRows;
@@ -88,11 +90,11 @@
 			
 			//add task on click of add task button
 			$("#content").on("click","#addtaskbtn",function(){
-				var hint="start typing here to create a task";
+				//var hint="start typing here to create a task";
 				var taskdesc=$(this).parent().parent().find("#taskdesc").val();
 				var title=$(this).parent().parent().parent().find("#title").html();
 				//add a task if the task description is provided 
-				if (taskdesc && taskdesc!=hint && title){
+				if (taskdesc && title){
 						//get an array of task rows
 						var taskrows=$(this).parent().parent().parent().find(".task");
 						//loop through the all taskrows
