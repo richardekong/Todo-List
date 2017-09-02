@@ -115,6 +115,13 @@ body{
 	border-top-left-radius:10px;
 	border-top-right-radius:10px;
 }
+#overlayimg{
+	top:20%;
+	margin-left:30%;
+	margin-right:30%;
+	width:40%;
+	height:60%;
+}
 #frontpagefooter{
 	position: fixed;
 	bottom:0;
@@ -150,7 +157,7 @@ body{
 .forminputs{
 	width:300px;
 	display: block;
-	margin-left:200px;
+	margin-left:400px;
 	padding: 20px;
 	
 }
@@ -159,7 +166,7 @@ font-size: 0.8em;
 color: #F00;
 font-weight: bold;
 display: block;
-margin-left: 215px;
+margin-left: 400px;
 }
 #comment{
 	color:green;
