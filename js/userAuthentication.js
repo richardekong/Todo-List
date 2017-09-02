@@ -2,11 +2,12 @@
 $(document).ready(function(){
 		//create a register form
 		$("#signup").on("click",function(){
+			$("#overlayimg").remove();
 			$("#frontpagefooter").hide();
 			var registerForm=$("<form action='../Todo-List/php/registerUser.php' method='POST' id='adduser'>"+
 								"<br><br>"+
 								"<fieldset>"+
-									"<legend style='text-align:center;'>Signup to create and access Todo List</legend>"+
+									"<legend style='text-align:center;color:#4673AD'>Signup to create and access Todo List</legend>"+
 										"<p>"+
 											"<input type='text' name='username' id='username' class='required forminputs' placeholder='Username'/>"+
 										"</p>"+
@@ -28,10 +29,11 @@ $(document).ready(function(){
 		});
 		//login an authorized user
 		$("#login").on("click",function(){
+			$("#overlayimg").remove();
 			$("#frontpagefooter").hide();
 			var loginForm=$("<form action='' method='POST' id='loginuser'>"+
 								"<fieldset>"+
-									"<legend style='text-align:center;'>Login to access Todo List</legend>"+
+									"<legend style='text-align:center;color:#4673AD;'>Login to access Todo List</legend>"+
 										"<p>"+
 											"<input type='text' id='usernamel' name='usernamel' placeholder='Username'/ class='required forminputs'>"+
 										"</p>"+
@@ -57,9 +59,10 @@ $(document).ready(function(){
 
 			 	$("#comment").html(comment);
 			 	//when signup is successful
-			 	if ($("#comment").html()=="User added successfully"){
-			 		clearForm();
+			 	if (comment=="User added successfully"){
+			 		
 			 		$("#comment").html(comment).fadeOut(3000);
+			 		clearForm();
 			 		$("#overlay").css("display","none");
 			 	}
 			 });
